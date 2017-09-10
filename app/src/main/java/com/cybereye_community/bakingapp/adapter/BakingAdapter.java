@@ -1,6 +1,7 @@
 package com.cybereye_community.bakingapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,7 +9,9 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.cybereye_community.bakingapp.R;
+import com.cybereye_community.bakingapp.RecipeActivity;
 import com.cybereye_community.bakingapp.model.Baking;
+import com.google.gson.GsonBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,8 +37,17 @@ public class BakingAdapter extends RecyclerView.Adapter<BakingAdapter.BakingHold
     }
 
     @Override
-    public void onBindViewHolder(BakingHolder holder, int position) {
+    public void onBindViewHolder(final BakingHolder holder, final int position) {
             holder.Name.setText(bakings.get(position).getName());
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Baking data = bakings.get(position);
+                    Intent i = new Intent(holder.itemView.getContext(), RecipeActivity.class);
+                    i.putExtra("recipe", new GsonBuilder().create().toJson(data));
+                    holder.itemView.getContext().startActivity(i);
+                }
+            });
     }
 
     @Override

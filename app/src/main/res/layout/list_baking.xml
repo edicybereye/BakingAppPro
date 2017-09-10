@@ -2,15 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:Card_view="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="10dp"
-    android:background="#a08fff"
+    android:padding="5dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <android.support.v7.widget.CardView
-        Card_view:cardCornerRadius="10dp"
+        Card_view:cardElevation="2dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
+            android:padding="10dp"
+            android:background="@drawable/card_edge"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
